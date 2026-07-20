@@ -4,7 +4,6 @@ import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Send, MapPin, Mail, Clock, ChevronDown, ChevronUp } from "lucide-react";
 import { FaLinkedin, FaGithub, FaYoutube, FaInstagram, FaDiscord, FaXTwitter } from "react-icons/fa6";
-
 import GlowButton from "@/components/ui/GlowButton";
 
 const socials = [
@@ -43,25 +42,24 @@ function FAQItem({ faq, index }: { faq: typeof faqs[0]; index: number }) {
   const [open, setOpen] = useState(false);
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 15 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
-      transition={{ delay: index * 0.07, duration: 0.5 }}
+      transition={{ delay: index * 0.06, duration: 0.4 }}
       className="border border-white/5 rounded-xl overflow-hidden mb-3 last:mb-0"
     >
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-white/3 transition-colors duration-200 group"
-        id={`faq-${index}`}
+        className="w-full flex items-center justify-between px-5 sm:px-6 py-3.5 sm:py-4 text-left hover:bg-white/5 transition-colors duration-200 group"
         aria-expanded={open}
       >
-        <span className="text-sm font-semibold text-white/80 group-hover:text-white transition-colors">
+        <span className="text-xs sm:text-sm font-semibold text-white/80 group-hover:text-white transition-colors">
           {faq.q}
         </span>
         {open ? (
-          <ChevronUp size={16} className="text-[#f5c242] flex-shrink-0" />
+          <ChevronUp size={16} className="text-[#f5c242] flex-shrink-0 ml-2" />
         ) : (
-          <ChevronDown size={16} className="text-white/40 flex-shrink-0" />
+          <ChevronDown size={16} className="text-white/40 flex-shrink-0 ml-2" />
         )}
       </button>
       <motion.div
@@ -70,7 +68,7 @@ function FAQItem({ faq, index }: { faq: typeof faqs[0]; index: number }) {
         transition={{ duration: 0.3, ease: "easeInOut" }}
         className="overflow-hidden"
       >
-        <p className="px-6 pb-4 text-sm text-white/45 leading-relaxed">{faq.a}</p>
+        <p className="px-5 sm:px-6 pb-4 text-xs sm:text-sm text-white/50 leading-relaxed">{faq.a}</p>
       </motion.div>
     </motion.div>
   );
@@ -99,7 +97,7 @@ export default function ContactContent() {
     setErrors(errs);
     if (Object.keys(errs).length > 0) return;
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 1500));
+    await new Promise((r) => setTimeout(r, 1200));
     setLoading(false);
     setSubmitted(true);
   };
@@ -110,30 +108,30 @@ export default function ContactContent() {
   };
 
   const inputClass = (field: string) =>
-    `w-full bg-[#111] border rounded-xl px-4 py-3 text-white text-sm placeholder:text-white/25 outline-none transition-all duration-300 focus:border-[#f5c242]/50 focus:shadow-[0_0_15px_rgba(245,194,66,0.1)] ${
-      errors[field] ? "border-[#d62828]/60" : "border-white/8"
+    `w-full bg-[#111] border rounded-xl px-4 py-3 text-white text-xs sm:text-sm placeholder:text-white/30 outline-none transition-all duration-300 focus:border-[#f5c242]/50 focus:shadow-[0_0_15px_rgba(245,194,66,0.1)] ${
+      errors[field] ? "border-[#d62828]/60" : "border-white/10"
     }`;
 
   return (
-    <div className="pt-20">
+    <div className="pt-24 sm:pt-28 md:pt-32">
       {/* Hero */}
-      <section className="relative py-24 overflow-hidden">
+      <section className="relative min-h-fit py-12 sm:py-16 md:py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-[#0a0805] to-[#050505]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full bg-[#ff7a18]/4 blur-[150px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] sm:w-[600px] h-[300px] sm:h-[400px] rounded-full bg-[#ff7a18]/4 blur-[100px] sm:blur-[140px]" />
         <div className="grid-lines absolute inset-0 opacity-15" />
-        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
+        <div className="relative z-10 text-center px-4 sm:px-6 max-w-4xl mx-auto">
           <motion.span
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-xs tracking-[0.4em] uppercase text-[#f5c242]/60 block mb-6"
+            className="text-[11px] sm:text-xs tracking-[0.3em] sm:tracking-[0.4em] uppercase text-[#f5c242]/70 font-semibold block mb-3 sm:mb-4"
           >
             Get In Touch
           </motion.span>
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.7 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-4 sm:mb-6 leading-tight"
             style={{ fontFamily: "Space Grotesk, sans-serif" }}
           >
             Let&apos;s Build Something{" "}
@@ -142,10 +140,10 @@ export default function ContactContent() {
             Together
           </motion.h1>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.7 }}
-            className="text-white/50 text-lg max-w-xl mx-auto"
+            className="text-white/60 text-sm sm:text-base md:text-lg max-w-xl mx-auto"
           >
             Whether you want to collaborate, commission work, join the team, or just say hello —
             we&apos;d love to hear from you.
@@ -154,38 +152,38 @@ export default function ContactContent() {
       </section>
 
       {/* Main Content */}
-      <section className="py-12 max-w-6xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
+      <section className="py-8 sm:py-12 max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Form */}
           <div ref={formRef} className="lg:col-span-3">
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7 }}
-              className="glass rounded-2xl p-8 border border-white/5"
+              transition={{ duration: 0.6 }}
+              className="glass rounded-2xl p-6 sm:p-8 border border-white/5"
             >
               {submitted ? (
-                <div className="text-center py-12">
+                <div className="text-center py-10 sm:py-14">
                   <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="text-6xl mb-4"
+                    className="text-5xl sm:text-6xl mb-4"
                   >
                     🎮
                   </motion.div>
-                  <h3 className="text-2xl font-black text-white mb-3" style={{ fontFamily: "Space Grotesk, sans-serif" }}>
+                  <h3 className="text-xl sm:text-2xl font-black text-white mb-3" style={{ fontFamily: "Space Grotesk, sans-serif" }}>
                     Message Received!
                   </h3>
-                  <p className="text-white/50 mb-4">We&apos;ll get back to you soon. The adventure continues...</p>
-                  <p className="font-tamil text-[#f5c242] tamil-glow text-xl">சடுகுடு தொடங்கட்டும்!</p>
+                  <p className="text-white/60 text-xs sm:text-sm mb-4">We&apos;ll get back to you soon. The adventure continues...</p>
+                  <p className="font-tamil text-[#f5c242] tamil-glow text-lg sm:text-xl">சடுகுடு தொடங்கட்டும்!</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} noValidate>
-                  <h2 className="text-xl font-black text-white mb-6" style={{ fontFamily: "Space Grotesk, sans-serif" }}>
+                  <h2 className="text-lg sm:text-xl font-black text-white mb-6" style={{ fontFamily: "Space Grotesk, sans-serif" }}>
                     Send a Message
                   </h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                     <div>
                       <input
                         id="contact-name"
@@ -195,7 +193,7 @@ export default function ContactContent() {
                         onChange={(e) => handleChange("name", e.target.value)}
                         className={inputClass("name")}
                       />
-                      {errors.name && <p className="text-[#d62828] text-xs mt-1">{errors.name}</p>}
+                      {errors.name && <p className="text-[#d62828] text-[11px] mt-1">{errors.name}</p>}
                     </div>
                     <div>
                       <input
@@ -206,7 +204,7 @@ export default function ContactContent() {
                         onChange={(e) => handleChange("email", e.target.value)}
                         className={inputClass("email")}
                       />
-                      {errors.email && <p className="text-[#d62828] text-xs mt-1">{errors.email}</p>}
+                      {errors.email && <p className="text-[#d62828] text-[11px] mt-1">{errors.email}</p>}
                     </div>
                   </div>
                   <div className="mb-4">
@@ -218,7 +216,7 @@ export default function ContactContent() {
                       onChange={(e) => handleChange("subject", e.target.value)}
                       className={inputClass("subject")}
                     />
-                    {errors.subject && <p className="text-[#d62828] text-xs mt-1">{errors.subject}</p>}
+                    {errors.subject && <p className="text-[#d62828] text-[11px] mt-1">{errors.subject}</p>}
                   </div>
                   <div className="mb-6">
                     <textarea
@@ -229,19 +227,19 @@ export default function ContactContent() {
                       onChange={(e) => handleChange("message", e.target.value)}
                       className={`${inputClass("message")} resize-none`}
                     />
-                    {errors.message && <p className="text-[#d62828] text-xs mt-1">{errors.message}</p>}
+                    {errors.message && <p className="text-[#d62828] text-[11px] mt-1">{errors.message}</p>}
                   </div>
                   <button
                     id="contact-submit"
                     type="submit"
                     disabled={loading}
-                    className="w-full flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-bold text-black bg-gradient-to-r from-[#ff7a18] to-[#f5c242] hover:shadow-[0_0_30px_rgba(245,194,66,0.4)] transition-all duration-300 disabled:opacity-50 hover:scale-[1.01]"
+                    className="w-full flex items-center justify-center gap-2 px-6 py-3.5 sm:py-4 rounded-xl font-bold text-black text-sm sm:text-base bg-gradient-to-r from-[#ff7a18] to-[#f5c242] hover:shadow-[0_0_25px_rgba(245,194,66,0.4)] transition-all duration-300 disabled:opacity-50 hover:scale-[1.01] active:scale-[0.99]"
                   >
                     {loading ? (
                       <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin" />
                     ) : (
                       <>
-                        <Send size={18} />
+                        <Send size={16} />
                         Send Message
                       </>
                     )}
@@ -253,55 +251,55 @@ export default function ContactContent() {
 
           {/* Info panel */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.15 }}
-            className="lg:col-span-2 space-y-5"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="lg:col-span-2 space-y-4 sm:space-y-5"
           >
             {/* Info cards */}
             {[
               { icon: MapPin, label: "Location", value: "Madurai, Tamil Nadu, India", color: "#d62828" },
               { icon: Mail, label: "Email", value: "hello@sadugudustudios.com", color: "#f5c242" },
               { icon: Clock, label: "Business Hours", value: "Mon–Sat: 10 AM – 7 PM IST", color: "#ff7a18" },
-            ].map((info, i) => (
-              <div key={info.label} className="glass rounded-xl p-5 border border-white/5 flex items-start gap-4">
+            ].map((info) => (
+              <div key={info.label} className="glass rounded-xl p-4 sm:p-5 border border-white/5 flex items-start gap-3.5">
                 <div
-                  className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center flex-shrink-0"
                   style={{ background: `${info.color}15`, border: `1px solid ${info.color}25` }}
                 >
-                  <info.icon size={18} style={{ color: info.color }} />
+                  <info.icon size={17} style={{ color: info.color }} />
                 </div>
                 <div>
-                  <div className="text-xs text-white/30 uppercase tracking-widest mb-0.5">{info.label}</div>
-                  <div className="text-sm text-white/80">{info.value}</div>
+                  <div className="text-[10px] text-white/40 uppercase tracking-widest mb-0.5 font-semibold">{info.label}</div>
+                  <div className="text-xs sm:text-sm text-white/80 font-medium">{info.value}</div>
                 </div>
               </div>
             ))}
 
             {/* Social links */}
-            <div className="glass rounded-xl p-5 border border-white/5">
-              <div className="text-xs text-white/30 uppercase tracking-widest mb-4">Follow Us</div>
-              <div className="grid grid-cols-3 gap-3">
+            <div className="glass rounded-xl p-4 sm:p-5 border border-white/5">
+              <div className="text-[10px] text-white/40 uppercase tracking-widest mb-3 font-semibold">Follow Us</div>
+              <div className="grid grid-cols-3 gap-2.5">
                 {socials.map((s) => (
                   <motion.a
                     key={s.label}
                     href={s.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ scale: 1.1, y: -3 }}
+                    whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                     title={s.label}
-                    className="flex flex-col items-center gap-1 glass rounded-lg p-3 border border-white/5 hover:border-white/15 transition-all duration-200 group"
+                    className="flex flex-col items-center justify-center gap-1 glass rounded-lg p-2.5 border border-white/5 hover:border-white/15 transition-all duration-200 group text-center"
                   >
-                    <s.icon size={18} className="text-white/50 group-hover:text-white transition-colors" />
-                    <span className="text-[10px] text-white/30 group-hover:text-white/60">{s.label}</span>
+                    <s.icon size={16} className="text-white/50 group-hover:text-white transition-colors" />
+                    <span className="text-[9px] sm:text-[10px] text-white/40 group-hover:text-white/70 truncate w-full">{s.label}</span>
                   </motion.a>
                 ))}
               </div>
             </div>
 
             {/* Map embed */}
-            <div className="glass rounded-xl overflow-hidden border border-white/5 h-48">
+            <div className="glass rounded-xl overflow-hidden border border-white/5 h-44 sm:h-48">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31588.47830012764!2d78.11482!3d9.9252!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00c582b1189633%3A0xdc7672b698090dad!2sMadurai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1234567890"
                 width="100%"
@@ -313,36 +311,26 @@ export default function ContactContent() {
                 title="Sadugudu Studios - Madurai, Tamil Nadu"
               />
             </div>
-
-            {/* Careers CTA */}
-            <div className="glass-gold rounded-xl p-5 border border-[#f5c242]/15 text-center">
-              <div className="text-2xl mb-2">🎯</div>
-              <h4 className="font-bold text-white mb-1" style={{ fontFamily: "Space Grotesk, sans-serif" }}>
-                Join the Studio
-              </h4>
-              <p className="text-white/40 text-xs mb-4">Passionate about Tamil gaming? We&apos;re always looking for talent.</p>
-              <GlowButton href="/contact" variant="outline" size="sm">
-                View Opportunities
-              </GlowButton>
-            </div>
           </motion.div>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="py-20 max-w-3xl mx-auto px-6">
+      <section className="py-12 sm:py-20 max-w-3xl mx-auto px-4 sm:px-6 md:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
         >
-          <span className="text-xs tracking-[0.4em] uppercase text-[#f5c242]/60 block mb-4">FAQ</span>
-          <h2 className="text-3xl md:text-4xl font-black text-white" style={{ fontFamily: "Space Grotesk, sans-serif" }}>
+          <span className="text-[11px] sm:text-xs tracking-[0.3em] sm:tracking-[0.4em] uppercase text-[#f5c242]/70 font-semibold block mb-3">
+            FAQ
+          </span>
+          <h2 className="text-2xl sm:text-4xl font-black text-white" style={{ fontFamily: "Space Grotesk, sans-serif" }}>
             Common <span className="gradient-text">Questions</span>
           </h2>
         </motion.div>
-        <div className="glass rounded-2xl p-2 border border-white/5">
+        <div className="glass rounded-2xl p-2 sm:p-3 border border-white/5">
           {faqs.map((faq, i) => (
             <FAQItem key={i} faq={faq} index={i} />
           ))}

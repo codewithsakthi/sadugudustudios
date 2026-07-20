@@ -42,10 +42,10 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
 
 export default function StatsCounter() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+  const isInView = useInView(containerRef, { once: true, margin: "-80px" });
 
   return (
-    <section className="relative py-24 overflow-hidden">
+    <section className="relative py-16 sm:py-20 md:py-24 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-[#0a0a0a] to-[#050505]" />
       <div className="absolute inset-0 grid-lines opacity-10" />
@@ -54,48 +54,48 @@ export default function StatsCounter() {
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#f5c242]/20 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#f5c242]/20 to-transparent" />
 
-      <div ref={containerRef} className="max-w-6xl mx-auto px-6">
+      <div ref={containerRef} className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 relative z-10">
         {/* Section label */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-14"
         >
-          <span className="text-xs tracking-[0.4em] uppercase text-[#f5c242]/60 font-medium">
+          <span className="text-[11px] sm:text-xs tracking-[0.3em] sm:tracking-[0.4em] uppercase text-[#f5c242]/70 font-semibold">
             The Journey So Far
           </span>
         </motion.div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: i * 0.1 + 0.2, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ delay: i * 0.1 + 0.1, duration: 0.6 }}
               className="relative group text-center"
             >
               {/* Card */}
-              <div className="glass rounded-2xl p-6 md:p-8 h-full border border-white/5 group-hover:border-[#f5c242]/20 transition-all duration-500 group-hover:shadow-[0_0_30px_rgba(245,194,66,0.08)]">
+              <div className="glass rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 h-full border border-white/5 group-hover:border-[#f5c242]/25 transition-all duration-300 group-hover:shadow-[0_0_25px_rgba(245,194,66,0.1)] flex flex-col justify-center">
                 {/* Number */}
                 <div
-                  className="text-4xl md:text-5xl lg:text-6xl font-black gradient-text mb-2"
+                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black gradient-text mb-1 sm:mb-2"
                   style={{ fontFamily: "Space Grotesk, sans-serif" }}
                 >
                   <Counter value={stat.value} suffix={stat.suffix} />
                 </div>
 
                 {/* Label */}
-                <div className="text-sm md:text-base font-semibold text-white/80 mb-1">
+                <div className="text-xs sm:text-sm md:text-base font-semibold text-white/90 mb-1">
                   {stat.label}
                 </div>
 
                 {/* Description */}
-                <div className="text-xs text-white/30">{stat.description}</div>
+                <div className="text-[10px] sm:text-xs text-white/40 leading-tight">{stat.description}</div>
 
                 {/* Bottom glow line */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 group-hover:w-3/4 h-px bg-gradient-to-r from-transparent via-[#f5c242]/50 to-transparent transition-all duration-500" />
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 group-hover:w-3/4 h-px bg-gradient-to-r from-transparent via-[#f5c242]/50 to-transparent transition-all duration-300" />
               </div>
             </motion.div>
           ))}
