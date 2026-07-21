@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sadugudu Studios - Tamil Game Development Studio building story-driven, affordable, unforgettable games from Madurai to the world.">
+  <title>Sadugudu Studios | Every Great Adventure Begins Somewhere</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Floating WhatsApp Action Button -->
+  <a href="https://wa.me/919876543210?text=Hello%20Sadugudu%20Studios%20Team!%20I%20read%20your%20story%20and%20want%20to%20connect." 
+     id="whatsapp-btn" 
+     class="whatsapp-float" 
+     target="_blank" 
+     rel="noopener noreferrer" 
+     title="Chat with Sadugudu Studios on WhatsApp">
+    💬
+  </a>
+
+  <!-- Navigation Bar -->
+  <nav id="navbar" class="navbar">
+    <div class="nav-container">
+      <a href="#home" class="brand-logo">
+        <img src="logo.png" alt="Sadugudu Studios Logo" class="brand-logo-img">
+        <span>Sadugudu <span style="color: var(--gold-primary);">Studios</span></span>
+      </a>
+
+      <!-- 5 Explicit Sections Requested -->
+      <ul class="nav-links">
+        <li><a href="#home" class="nav-link active">1. Home</a></li>
+        <li><a href="#products" class="nav-link">2. Product/Service</a></li>
+        <li><a href="#about" class="nav-link">3. About Us</a></li>
+        <li><a href="#founder" class="nav-link">4. About Founder</a></li>
+        <li><a href="#contact" class="nav-link">5. Contact Us</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- Call Dialer Redirection Button -->
+        <a href="tel:+919876543210" id="nav-call-btn" class="icon-action-btn" title="Call Us Directly">
+          📞 <span style="display: inline-block;">Call</span>
+        </a>
+
+        <!-- Mail App Redirection Button -->
+        <a href="mailto:contact@sadugudustudios.com" id="nav-mail-btn" class="icon-action-btn" title="Email Us Directly">
+          ✉️ <span style="display: inline-block;">Email</span>
+        </a>
+
+        <!-- Ambient Sound Synthesizer Button -->
+        <button id="sound-toggle" class="icon-action-btn" aria-label="Toggle Ambient Sound">
+          <span id="sound-text">🔇 Ambient Sound</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==========================================================================
+       SECTION 1: HOME
+       ========================================================================== -->
+  <section id="home" class="hero grid-lines">
+    <canvas id="embers-canvas"></canvas>
+
+    <div class="hero-content reveal-on-scroll">
+      <!-- Official Animated Logo Showcase -->
+      <div class="hero-logo-wrapper">
+        <img src="logo.png" alt="Sadugudu Studios Official Logo" class="hero-logo-img">
+      </div>
+
+      <div class="font-tamil hero-tagline tamil-glow">சடுகுடு தொடங்கட்டும்!</div>
+      
+      <h1 class="hero-headline">
+        Every Great <br>
+        <span class="gradient-text">Adventure</span> <br>
+        Begins Somewhere.
+      </h1>
+
+      <p class="hero-description">
+        Where every game begins with a story. We are <strong style="color: var(--gold-primary);">Sadugudu Studios</strong> — 
+        a Tamil game development studio crafting unforgettable, story-driven games from Madurai to global screens.
+      </p>
+
+      <div class="hero-cta">
+        <a href="#about" class="btn-glow btn-primary">📖 Read Our Story</a>
+        <a href="#products" class="btn-glow btn-outline">🎮 Explore Our Games</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Stats Counter -->
+  <section id="stats" class="section">
+    <div class="section-container">
+      <div class="stats-grid reveal-on-scroll">
+        <div class="glass-card stat-card">
+          <div class="stat-number" data-target="5" data-suffix="+">0</div>
+          <div class="stat-label">Games & Experiences in Dev</div>
+        </div>
+
+        <div class="glass-card stat-card">
+          <div class="stat-number" data-target="100" data-suffix="K+">0</div>
+          <div class="stat-label">Roblox Impressions</div>
+        </div>
+
+        <div class="glass-card stat-card">
+          <div class="stat-number" data-target="100" data-suffix="%">0</div>
+          <div class="stat-label">Tamil Cultural Infusion</div>
+        </div>
+
+        <div class="glass-card stat-card">
+          <div class="stat-number" data-target="2026" data-suffix="">0</div>
+          <div class="stat-label">Global Launch Era</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 2: PRODUCT / SERVICE
+       ========================================================================== -->
+  <section id="products" class="section" style="background: rgba(0,0,0,0.3);">
+    <div class="section-container">
+      <div class="section-header reveal-on-scroll">
+        <span class="section-subtitle">2. Products & Services</span>
+        <h2 class="section-title">Games, Worlds & <span class="gradient-text">Stories</span></h2>
+        <p style="color: var(--text-muted); margin-top: 1rem;">
+          We build accessible, affordable, and deeply memorable story games across Roblox, Steam, and Epic Games Store.
+        </p>
+      </div>
+
+      <div class="products-grid reveal-on-scroll">
+        <!-- Product 1: Roblox -->
+        <div class="glass-card product-card">
+          <div>
+            <span class="product-tag">Roblox Experience</span>
+            <div class="product-icon">🟥</div>
+            <h3 class="product-title">Roblox World Building</h3>
+            <p class="product-desc">
+              Affordable, highly accessible multiplayer story games built on Roblox Studio. Free to play, social, and culturally rich for players everywhere.
+            </p>
+          </div>
+          <a href="#contact" class="btn-glow btn-outline" style="font-size: 0.85rem; padding: 0.55rem 1rem;">Collab on Roblox →</a>
+        </div>
+
+        <!-- Product 2: Steam & Epic Games -->
+        <div class="glass-card product-card">
+          <div>
+            <span class="product-tag">Unreal Engine 5</span>
+            <div class="product-icon">🚀</div>
+            <h3 class="product-title">PC & Console Story Games</h3>
+            <p class="product-desc">
+              Full-fledged indie action RPGs for Steam and Epic Games Store. High fidelity, immersive Tamil voice acting, and deep narrative arcs.
+            </p>
+          </div>
+          <a href="#contact" class="btn-glow btn-outline" style="font-size: 0.85rem; padding: 0.55rem 1rem;">Join Beta Program →</a>
+        </div>
+
+        <!-- Product 3: Cultural IP & Voice Acting -->
+        <div class="glass-card product-card">
+          <div>
+            <span class="product-tag">Original Tamil IP</span>
+            <div class="product-icon">📜</div>
+            <h3 class="product-title">Tamil Storytelling & Audio</h3>
+            <p class="product-desc">
+              Custom game narrative design, Tamil voiceovers, and rich local folklore world-building services for international gaming studios.
+            </p>
+          </div>
+          <a href="#contact" class="btn-glow btn-outline" style="font-size: 0.85rem; padding: 0.55rem 1rem;">Inquire Services →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 3: ABOUT US ("OUR STORY")
+       ========================================================================== -->
+  <section id="about" class="section">
+    <div class="section-container">
+      <div class="section-header reveal-on-scroll">
+        <span class="section-subtitle">3. About Us</span>
+        <h2 class="section-title">Our <span class="gradient-text">Story</span></h2>
+        <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 1.15rem;">
+          Every Great Adventure Begins Somewhere.
+        </p>
+      </div>
+
+      <div class="story-timeline reveal-on-scroll">
+
+        <!-- Chapter 1 -->
+        <article class="glass-card story-chapter">
+          <span class="story-chapter-number">Chapter 01</span>
+          <h3 class="story-chapter-title">Every Great Adventure Begins Somewhere</h3>
+          <p class="story-text">
+            For us, it didn't begin in a million-dollar office. It began in a small home in Madurai.
+          </p>
+          <p class="story-text">
+            Long before high-end gaming PCs, before powerful consoles, and before game engines became part of everyday conversations, there was one person who unknowingly started everything—my father.
+          </p>
+          <p class="story-text">
+            He has always been fascinated by technology. While many people used the same phone for years, he was always excited to explore the next device. Every few months there would be a different mobile phone in our house. Watching him discover new technology made one thing clear to me from a very young age:
+          </p>
+          <div class="story-quote-box">
+            "Technology isn't something to fear. It's something to explore."
+          </div>
+          <p class="story-text">That curiosity became mine.</p>
+        </article>
+
+        <!-- Chapter 2 -->
+        <article class="glass-card story-chapter">
+          <span class="story-chapter-number">Chapter 02</span>
+          <h3 class="story-chapter-title">Before Smartphones, There Were Stories</h3>
+          <p class="story-text">
+            I grew up during the era of keypad phones. There was no app store. There were no gaming PCs. There were only tiny JAR and JAD games downloaded onto simple phones with tiny screens and physical buttons.
+          </p>
+          <p class="story-text">
+            To many people, they were just small mobile games. To me, they were entire worlds.
+          </p>
+          <p class="story-text">
+            One game changed everything. It was a story-driven game called <strong class="story-highlight">Vampires Dawn</strong>. The graphics were simple. The hardware was limited. The screen was tiny. But the story... The story stayed with me.
+          </p>
+          <div class="story-quote-box">
+            "Great games are never defined by powerful hardware. They're remembered because of unforgettable stories."
+          </div>
+          <p class="story-text">That realization became the foundation of Sadugudu Studios.</p>
+        </article>
+
+        <!-- Chapter 3 -->
+        <article class="glass-card story-chapter">
+          <span class="story-chapter-number">Chapter 03</span>
+          <h3 class="story-chapter-title">A Question That Never Left Me</h3>
+          <p class="story-text">
+            As a child, I didn't understand English very well. Whenever I played story games, I could feel that something incredible was happening... But I couldn't fully experience it.
+          </p>
+          <p class="story-text">
+            I wasn't alone. Millions of Tamil players loved games but couldn't completely understand the stories they were playing. I kept asking myself one simple question:
+          </p>
+          <div class="story-quote-box">
+            "Why isn't anyone making games in Tamil?"
+          </div>
+          <p class="story-text">
+            Not just subtitles. Not translations. Real games. Games where characters speak Tamil. Games that make Tamil players feel like the world was built for them. That question stayed with me for years.
+          </p>
+        </article>
+
+        <!-- Chapter 4 -->
+        <article class="glass-card story-chapter">
+          <span class="story-chapter-number">Chapter 04</span>
+          <h3 class="story-chapter-title">The Spark That Became A Dream</h3>
+          <p class="story-text">
+            As I grew older, I found something that inspired me even more. For nearly a decade, I watched Tamil gaming creators bring story-driven games to life for Tamil audiences.
+          </p>
+          <p class="story-text">
+            They didn't simply play games. They translated emotions. They translated conversations. They translated entire worlds into a language everyone around me could understand.
+          </p>
+          <p class="story-text">
+            Watching those experiences made me realize something powerful: People weren't just enjoying the gameplay. They were connecting with the story because they finally understood it.
+          </p>
+          <div class="story-quote-box">
+            "I didn't just want to play great games. I wanted to create them."
+          </div>
+        </article>
+
+        <!-- Chapter 5 & 6 -->
+        <article class="glass-card story-chapter">
+          <span class="story-chapter-number">Chapter 05 & 06</span>
+          <h3 class="story-chapter-title">Why Sadugudu Studios Exists & More Than Entertainment</h3>
+          <p class="story-text">
+            Many of today's biggest games cost ₹5,000, ₹7,000, or even more. For many players, those experiences remain out of reach. We believe amazing stories shouldn't belong only to those who can afford expensive games.
+          </p>
+          <p class="story-text">
+            Everyone deserves unforgettable adventures. Everyone deserves meaningful stories. Everyone deserves games that speak their language. That is why Sadugudu Studios exists.
+          </p>
+          <div class="story-quote-box">
+            "Games teach courage. Games teach teamwork. Games create friendships. Games create memories. Games inspire imagination."
+          </div>
+          <p class="story-text">
+            Sometimes... A game can change the way someone sees life. That is the kind of experience we want to build.
+          </p>
+        </article>
+
+        <!-- Chapter 7: Vision -->
+        <article class="glass-card story-chapter" style="border-left-color: var(--orange-primary);">
+          <span class="story-chapter-number" style="color: var(--orange-primary);">Chapter 07</span>
+          <h3 class="story-chapter-title">Our Vision</h3>
+          <p class="story-text">
+            We dream of a future where players around the world launch a game and hear something they have never heard before. A beautiful story... Told in Tamil.
+          </p>
+          <p class="story-text">
+            Not because it's different. But because it deserves to be heard. We are starting with Roblox. Then Steam. Then Epic Games. And one day, wherever gamers are.
+          </p>
+          <div class="story-quote-box" style="border-left-color: var(--orange-primary); color: var(--orange-primary);">
+            "This journey isn't about making the biggest games. It's about creating games that people remember long after the credits roll."
+          </div>
+          <div class="font-tamil tamil-glow" style="text-align: center; font-size: 2rem; font-weight: 700; color: var(--gold-primary); margin-top: 2rem;">
+            சடுகுடு தொடங்கட்டும்!
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 4: ABOUT THE FOUNDER
+       ========================================================================== -->
+  <section id="founder" class="section" style="background: rgba(0,0,0,0.3);">
+    <div class="section-container">
+      <div class="section-header reveal-on-scroll">
+        <span class="section-subtitle">4. About The Founder</span>
+        <h2 class="section-title">Rooted In <span class="gradient-text">Madurai</span></h2>
+      </div>
+
+      <div class="glass-card founder-card-box reveal-on-scroll">
+        <div class="founder-img-wrapper">
+          <img src="logo.png" alt="Founder of Sadugudu Studios Logo" class="founder-logo-avatar">
+          <h3 style="font-size: 1.4rem; font-weight: 700;">Founder & Lead Developer</h3>
+          <p style="color: var(--gold-primary); font-weight: 600;">Madurai, Tamil Nadu</p>
+          <div class="font-tamil tamil-glow" style="color: var(--text-muted); font-size: 1.1rem; margin-top: 0.5rem;">
+            சடுகுடு தொடங்கட்டும்!
+          </div>
+        </div>
+
+        <div>
+          <blockquote class="story-quote-box" style="margin-top: 0;">
+            "Founder of Sadugudu Studios. Tamil. Self-taught. Passionate about making games that tell stories nobody else is telling — in a language nobody else is using — for a community nobody else is building for."
+          </blockquote>
+          
+          <p class="story-text">
+            Inspired by my father's endless curiosity for technology in Madurai, I embarked on a journey to teach myself game development, storytelling, and world-building.
+          </p>
+
+          <p class="story-text">
+            Sadugudu Studios is not just a game studio—it's a tribute to Tamil culture, accessible story gaming, and the belief that every great adventure begins somewhere.
+          </p>
+
+          <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
+            <a href="#contact" class="btn-glow btn-primary">Connect With Founder</a>
+            <a href="https://wa.me/919876543210" target="_blank" class="btn-glow btn-outline">💬 Chat on WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 5: CONTACT US
+       ========================================================================== -->
+  <section id="contact" class="section">
+    <div class="section-container">
+      <div class="section-header reveal-on-scroll">
+        <span class="section-subtitle">5. Contact Us</span>
+        <h2 class="section-title">Collaborate & <span class="gradient-text">Connect Direct</span></h2>
+        <p style="color: var(--text-muted); margin-top: 0.5rem;">
+          Reach out to Sadugudu Studios for game collaborations, feedback, or media inquiries.
+        </p>
+      </div>
+
+      <div class="contact-container reveal-on-scroll">
+        <!-- Quick Redirection Cards & Map -->
+        <div class="quick-contact-box">
+          <!-- Call Dialer Card -->
+          <a href="tel:+919876543210" id="call-redirect-btn" class="glass-card redirect-card">
+            <div class="redirect-icon">📞</div>
+            <div>
+              <div style="font-weight: 700; font-size: 1.1rem;">Call Studio HQ</div>
+              <div style="color: var(--text-muted); font-size: 0.9rem;">+91 98765 43210 (Touch to Dial)</div>
+            </div>
+          </a>
+
+          <!-- Mail App Redirection Card -->
+          <a href="mailto:contact@sadugudustudios.com" id="mail-redirect-btn" class="glass-card redirect-card">
+            <div class="redirect-icon" style="background: linear-gradient(135deg, var(--orange-primary), var(--purple-primary));">✉️</div>
+            <div>
+              <div style="font-weight: 700; font-size: 1.1rem;">Email Studio Mailbox</div>
+              <div style="color: var(--text-muted); font-size: 0.9rem;">contact@sadugudustudios.com</div>
+            </div>
+          </a>
+
+          <!-- WhatsApp Direct Chat Card -->
+          <a href="https://wa.me/919876543210" target="_blank" class="glass-card redirect-card">
+            <div class="redirect-icon" style="background: linear-gradient(135deg, #25D366, #128C7E); color: #fff;">💬</div>
+            <div>
+              <div style="font-weight: 700; font-size: 1.1rem;">Instant WhatsApp Chat</div>
+              <div style="color: var(--text-muted); font-size: 0.9rem;">Chat with lead developer directly</div>
+            </div>
+          </a>
+
+          <!-- Embedded Map -->
+          <div class="map-iframe-container">
+            <iframe 
+              src="https://maps.google.com/maps?q=Madurai,Tamil%20Nadu&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+              width="100%" 
+              height="100%" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              title="Sadugudu Studios Madurai Map Location">
+            </iframe>
+          </div>
+        </div>
+
+        <!-- Form Fill (Hold to Submit) Card -->
+        <div class="glass-card" style="padding: 2.5rem;">
+          <form id="contact-form">
+            <div class="form-group">
+              <label class="form-label" for="form-name">Your Name</label>
+              <input type="text" id="form-name" class="form-input" placeholder="e.g. Sakthi Developer" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="form-email">Email Address</label>
+              <input type="email" id="form-email" class="form-input" placeholder="name@example.com" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="form-phone">Phone Number</label>
+              <input type="tel" id="form-phone" class="form-input" placeholder="+91 98765 43210">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="form-message">Project Message / Inquiry</label>
+              <textarea id="form-message" class="form-textarea" rows="4" placeholder="Tell us about your game idea or message..." required></textarea>
+            </div>
+
+            <div class="form-actions">
+              <!-- Auto Fill Button -->
+              <button type="button" id="auto-fill-btn" class="btn-glow btn-outline" style="font-size: 0.85rem; padding: 0.75rem 1rem;">
+                ⚡ Auto-Fill Form
+              </button>
+
+              <!-- Hold to Submit Button -->
+              <button type="button" id="hold-submit-btn" class="btn-glow btn-primary btn-hold-submit">
+                <div id="hold-progress" class="hold-progress-bar"></div>
+                <span style="position: relative; z-index: 2;">Hold to Submit (1s) 🚀</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <a href="#home" class="brand-logo" style="justify-content: center;">
+        <img src="logo.png" alt="Sadugudu Studios Logo" class="brand-logo-img">
+        <span>Sadugudu <span style="color: var(--gold-primary);">Studios</span></span>
+      </a>
+
+      <div class="footer-socials">
+        <a href="https://wa.me/919876543210" target="_blank" class="social-link" title="WhatsApp">💬 WhatsApp</a>
+        <a href="tel:+919876543210" class="social-link" title="Call">📞 Call</a>
+        <a href="mailto:contact@sadugudustudios.com" class="social-link" title="Email">✉️ Email</a>
+        <a href="#" class="social-link" title="Discord">🎮 Discord</a>
+      </div>
+
+      <p class="footer-copy">
+        &copy; 2026 Sadugudu Studios. All rights reserved. Madurai, Tamil Nadu.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>
