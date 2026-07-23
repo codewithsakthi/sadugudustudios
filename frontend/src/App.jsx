@@ -176,11 +176,17 @@ function App() {
       if (import.meta.env.VITE_API_URL) {
         return `${import.meta.env.VITE_API_URL.replace(/\/$/, '')}/api/contacts/`;
       }
+      const host = window.location.hostname;
       const isLocal =
         window.location.protocol === 'file:' ||
-        window.location.hostname === 'localhost' ||
-        window.location.hostname === '127.0.0.1' ||
-        !window.location.hostname;
+        host === 'localhost' ||
+        host === '127.0.0.1' ||
+        host === '0.0.0.0' ||
+        host === '[::1]' ||
+        host.startsWith('192.168.') ||
+        host.startsWith('10.') ||
+        host.endsWith('.local') ||
+        !host;
       return isLocal ? 'http://localhost:8000/api/contacts/' : '/api/contacts/';
     };
 
@@ -262,11 +268,17 @@ function App() {
       if (import.meta.env.VITE_API_URL) {
         return `${import.meta.env.VITE_API_URL.replace(/\/$/, '')}/api/contacts/`;
       }
+      const host = window.location.hostname;
       const isLocal =
         window.location.protocol === 'file:' ||
-        window.location.hostname === 'localhost' ||
-        window.location.hostname === '127.0.0.1' ||
-        !window.location.hostname;
+        host === 'localhost' ||
+        host === '127.0.0.1' ||
+        host === '0.0.0.0' ||
+        host === '[::1]' ||
+        host.startsWith('192.168.') ||
+        host.startsWith('10.') ||
+        host.endsWith('.local') ||
+        !host;
       return isLocal ? 'http://localhost:8000/api/contacts/' : '/api/contacts/';
     };
 
