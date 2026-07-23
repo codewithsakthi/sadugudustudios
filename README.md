@@ -1,6 +1,6 @@
 # Sadugudu Studios
 
-A modern, full-stack application built with a vanilla frontend and a robust FastAPI + PostgreSQL backend.
+A modern, full-stack application built with a React frontend and an Express.js + Supabase PostgreSQL backend.
 
 ## 🚀 Project Structure
 
