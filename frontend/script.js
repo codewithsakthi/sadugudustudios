@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initHoldToSubmitForm();
   initQuickAutoFill();
   initContactRedirections();
+  initInquiriesModal();
 });
 
 /* --------------------------------------------------------------------------
@@ -263,14 +264,48 @@ function initHoldToSubmitForm() {
     progressBar.style.width = '0%';
   }
 
-  function submitForm() {
-    const name = document.getElementById('form-name').value || 'Gaming Creator';
-    showToast(`🚀 Message submitted successfully! Thank you, ${name}.`);
-    form.reset();
+  async function submitForm() {
+    const name = document.getElementById('form-name').value.trim() || 'Gaming Creator';
+    const email = document.getElementById('form-email').value.trim() || 'creator@example.com';
+    const phone = document.getElementById('form-phone').value.trim() || '';
+    const message = document.getElementById('form-message').value.trim() || 'Hello Sadugudu Studios!';
+
+    const isLocal = window.location.protocol === 'file:' || 
+                    window.location.hostname === 'localhost' || 
+                    window.location.hostname === '127.0.0.1' || 
+                    !window.location.hostname;
+    const API_URL = isLocal ? 'http://localhost:8000/api/contacts/' : '/api/contacts/';
+
+    try {
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, phone, message })
+      });
+
+      if (response.ok) {
+        const savedItem = await response.json();
+        showToast(`🚀 Saved to PostgreSQL DB! (ID #${savedItem.id}). Thank you, ${name}.`);
+        form.reset();
+      } else {
+        const errorData = await response.json().catch(() => ({}));
+        showToast(`⚠️ Database error (${response.status}): ${errorData.detail || 'Could not save record'}`);
+      }
+    } catch (err) {
+      console.error('PostgreSQL API submit error:', err);
+      showToast(`⚠️ Cannot reach database: ${err.message}. Make sure backend is running on http://localhost:8000`);
+    }
+
     cancelHold();
   }
 
-  // Mouse & Touch events for holding down
+  // Form submit & click listeners
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    submitForm();
+  });
+
+  // Mouse & Touch events for holding down button
   holdBtn.addEventListener('mousedown', startHold);
   holdBtn.addEventListener('mouseup', cancelHold);
   holdBtn.addEventListener('mouseleave', cancelHold);
@@ -322,6 +357,60 @@ function initContactRedirections() {
       showToast('💬 Redirecting to WhatsApp Support...');
     });
   }
+}
+
+function initInquiriesModal() {
+  const modal = document.getElementById('inquiries-modal');
+  const openBtn = document.getElementById('view-inquiries-btn');
+  const closeBtn = document.getElementById('close-inquiries-modal');
+  const inquiriesList = document.getElementById('inquiries-list');
+
+  if (!modal || !openBtn || !closeBtn) return;
+
+  openBtn.addEventListener('click', async () => {
+    modal.style.display = 'flex';
+    inquiriesList.innerHTML = '<div style="text-align: center; color: var(--text-muted); padding: 2rem;">Loading inquiries from PostgreSQL database...</div>';
+
+    const isLocal = window.location.protocol === 'file:' || 
+                    window.location.hostname === 'localhost' || 
+                    window.location.hostname === '127.0.0.1' || 
+                    !window.location.hostname;
+    const API_URL = isLocal ? 'http://localhost:8000/api/contacts/' : '/api/contacts/';
+
+    try {
+      const response = await fetch(API_URL);
+      if (!response.ok) throw new Error('Failed to fetch inquiries');
+      const data = await response.json();
+
+      if (!data || data.length === 0) {
+        inquiriesList.innerHTML = '<div style="text-align: center; color: var(--text-muted); padding: 2rem;">No inquiries saved in database yet.</div>';
+        return;
+      }
+
+      inquiriesList.innerHTML = data.map(item => `
+        <div style="background: rgba(255, 255, 255, 0.05); padding: 1.25rem; border-radius: 10px; border-left: 4px solid var(--gold-primary);">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+            <strong style="color: #fff; font-size: 1.05rem;">${item.name}</strong>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">${new Date(item.created_at).toLocaleString()}</span>
+          </div>
+          <div style="font-size: 0.9rem; color: var(--gold-primary); margin-bottom: 0.25rem;">
+            📧 ${item.email} ${item.phone ? ' | 📞 ' + item.phone : ''}
+          </div>
+          <div style="font-size: 0.95rem; color: #ddd; white-space: pre-wrap; margin-top: 0.5rem;">${item.message}</div>
+        </div>
+      `).join('');
+    } catch (err) {
+      inquiriesList.innerHTML = `<div style="text-align: center; color: #ff6b6b; padding: 2rem;">⚠️ Unable to reach backend service (${err.message}). Make sure FastAPI server is running on http://localhost:8000</div>`;
+    }
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) modal.style.display = 'none';
+  });
 }
 
 function showToast(message) {
