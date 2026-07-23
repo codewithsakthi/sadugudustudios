@@ -391,7 +391,11 @@ function initInquiriesModal() {
 
     try {
       const response = await fetch(API_URL);
-      if (!response.ok) throw new Error('Failed to fetch inquiries');
+      const contentType = response.headers.get('content-type') || '';
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      if (!contentType.includes('application/json')) {
+        throw new Error(`Server returned HTML (${response.status}) instead of JSON. Ensure backend API is active at ${API_URL}`);
+      }
       const data = await response.json();
 
       if (!data || data.length === 0) {

@@ -193,6 +193,11 @@ function App() {
         body: JSON.stringify({ name, email, phone, message }),
       });
 
+      const contentType = response.headers.get('content-type') || '';
+      if (!contentType.includes('application/json')) {
+        throw new Error(`Server returned HTML (${response.status}) instead of JSON response`);
+      }
+
       if (response.ok) {
         const savedItem = await response.json();
         triggerToast(`🚀 Saved to PostgreSQL DB! (ID #${savedItem.id}). Thank you, ${name}.`);
@@ -269,11 +274,15 @@ function App() {
 
     try {
       const response = await fetch(API_URL);
-      if (!response.ok) throw new Error('Failed to fetch inquiries');
+      const contentType = response.headers.get('content-type') || '';
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      if (!contentType.includes('application/json')) {
+        throw new Error(`Backend returned HTML page instead of JSON. Ensure backend API is active at ${API_URL}`);
+      }
       const data = await response.json();
       setInquiries(data || []);
     } catch (err) {
-      triggerToast(`⚠️ Unable to reach backend service: ${err.message}`);
+      triggerToast(`⚠️ Backend error: ${err.message}`);
     } finally {
       setLoadingInquiries(false);
     }
