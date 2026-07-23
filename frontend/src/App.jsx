@@ -172,12 +172,19 @@ function App() {
     const phone = formPhone.trim() || '';
     const message = formMessage.trim() || 'Hello Sadugudu Studios!';
 
-    const isLocal =
-      window.location.protocol === 'file:' ||
-      window.location.hostname === 'localhost' ||
-      window.location.hostname === '127.0.0.1' ||
-      !window.location.hostname;
-    const API_URL = isLocal ? 'http://localhost:8000/api/contacts' : 'https://sadugudustudios.onrender.com/api/contacts';
+    const getApiUrl = () => {
+      if (import.meta.env.VITE_API_URL) {
+        return `${import.meta.env.VITE_API_URL.replace(/\/$/, '')}/api/contacts/`;
+      }
+      const isLocal =
+        window.location.protocol === 'file:' ||
+        window.location.hostname === 'localhost' ||
+        window.location.hostname === '127.0.0.1' ||
+        !window.location.hostname;
+      return isLocal ? 'http://localhost:8000/api/contacts/' : '/api/contacts/';
+    };
+
+    const API_URL = getApiUrl();
 
     try {
       const response = await fetch(API_URL, {
@@ -199,7 +206,7 @@ function App() {
       }
     } catch (err) {
       console.error('PostgreSQL API submit error:', err);
-      triggerToast(`⚠️ Cannot reach database: ${err.message}. Make sure backend is running on http://localhost:8000`);
+      triggerToast(`⚠️ Cannot reach database: ${err.message}. Backend URL: ${API_URL}`);
     }
 
     cancelHold();
@@ -246,12 +253,19 @@ function App() {
     setIsModalOpen(true);
     setLoadingInquiries(true);
 
-    const isLocal =
-      window.location.protocol === 'file:' ||
-      window.location.hostname === 'localhost' ||
-      window.location.hostname === '127.0.0.1' ||
-      !window.location.hostname;
-    const API_URL = isLocal ? 'http://localhost:8000/api/contacts' : 'https://sadugudustudios.onrender.com/api/contacts';
+    const getApiUrl = () => {
+      if (import.meta.env.VITE_API_URL) {
+        return `${import.meta.env.VITE_API_URL.replace(/\/$/, '')}/api/contacts/`;
+      }
+      const isLocal =
+        window.location.protocol === 'file:' ||
+        window.location.hostname === 'localhost' ||
+        window.location.hostname === '127.0.0.1' ||
+        !window.location.hostname;
+      return isLocal ? 'http://localhost:8000/api/contacts/' : '/api/contacts/';
+    };
+
+    const API_URL = getApiUrl();
 
     try {
       const response = await fetch(API_URL);

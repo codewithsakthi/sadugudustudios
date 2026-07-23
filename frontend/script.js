@@ -270,11 +270,17 @@ function initHoldToSubmitForm() {
     const phone = document.getElementById('form-phone').value.trim() || '';
     const message = document.getElementById('form-message').value.trim() || 'Hello Sadugudu Studios!';
 
-    const isLocal = window.location.protocol === 'file:' || 
-                    window.location.hostname === 'localhost' || 
-                    window.location.hostname === '127.0.0.1' || 
-                    !window.location.hostname;
-    const API_URL = isLocal ? 'http://localhost:8000/api/contacts/' : '/api/contacts/';
+    const getApiUrl = () => {
+      if (window.VITE_API_URL) {
+        return `${window.VITE_API_URL.replace(/\/$/, '')}/api/contacts/`;
+      }
+      const isLocal = window.location.protocol === 'file:' || 
+                      window.location.hostname === 'localhost' || 
+                      window.location.hostname === '127.0.0.1' || 
+                      !window.location.hostname;
+      return isLocal ? 'http://localhost:8000/api/contacts/' : '/api/contacts/';
+    };
+    const API_URL = getApiUrl();
 
     try {
       const response = await fetch(API_URL, {
@@ -371,11 +377,17 @@ function initInquiriesModal() {
     modal.style.display = 'flex';
     inquiriesList.innerHTML = '<div style="text-align: center; color: var(--text-muted); padding: 2rem;">Loading inquiries from PostgreSQL database...</div>';
 
-    const isLocal = window.location.protocol === 'file:' || 
-                    window.location.hostname === 'localhost' || 
-                    window.location.hostname === '127.0.0.1' || 
-                    !window.location.hostname;
-    const API_URL = isLocal ? 'http://localhost:8000/api/contacts/' : '/api/contacts/';
+    const getApiUrl = () => {
+      if (window.VITE_API_URL) {
+        return `${window.VITE_API_URL.replace(/\/$/, '')}/api/contacts/`;
+      }
+      const isLocal = window.location.protocol === 'file:' || 
+                      window.location.hostname === 'localhost' || 
+                      window.location.hostname === '127.0.0.1' || 
+                      !window.location.hostname;
+      return isLocal ? 'http://localhost:8000/api/contacts/' : '/api/contacts/';
+    };
+    const API_URL = getApiUrl();
 
     try {
       const response = await fetch(API_URL);
