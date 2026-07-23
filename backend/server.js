@@ -46,8 +46,8 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', service: 'Sadugudu Studios Express API' });
 });
 
-// GET /api/contacts/ - Fetch all contact submissions
-app.get('/api/contacts/', async (req, res) => {
+// GET /api/contacts & /api/contacts/ - Fetch all contact submissions
+app.get(['/api/contacts', '/api/contacts/'], async (req, res) => {
   try {
     const result = await pool.query(
       'SELECT id, name, email, phone, message, created_at FROM contacts ORDER BY id DESC'
@@ -59,8 +59,8 @@ app.get('/api/contacts/', async (req, res) => {
   }
 });
 
-// POST /api/contacts/ - Submit a new contact message
-app.post('/api/contacts/', async (req, res) => {
+// POST /api/contacts & /api/contacts/ - Submit a new contact message
+app.post(['/api/contacts', '/api/contacts/'], async (req, res) => {
   const { name, email, phone, message } = req.body;
 
   if (!name || !email || !message) {
