@@ -177,7 +177,7 @@ function App() {
       window.location.hostname === 'localhost' ||
       window.location.hostname === '127.0.0.1' ||
       !window.location.hostname;
-    const API_URL = isLocal ? 'http://localhost:8000/api/contacts/' : '/api/contacts/';
+    const API_URL = isLocal ? 'http://localhost:8000/api/contacts/' : 'https://sadugudustudios.onrender.com/api/contacts/';
 
     try {
       const response = await fetch(API_URL, {
@@ -251,7 +251,7 @@ function App() {
       window.location.hostname === 'localhost' ||
       window.location.hostname === '127.0.0.1' ||
       !window.location.hostname;
-    const API_URL = isLocal ? 'http://localhost:8000/api/contacts/' : '/api/contacts/';
+    const API_URL = isLocal ? 'http://localhost:8000/api/contacts/' : 'https://sadugudustudios.onrender.com/api/contacts/';
 
     try {
       const response = await fetch(API_URL);
